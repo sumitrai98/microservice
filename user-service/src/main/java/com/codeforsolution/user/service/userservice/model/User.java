@@ -1,10 +1,7 @@
 package com.codeforsolution.user.service.userservice.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -17,7 +14,8 @@ import java.time.LocalDateTime;
 @Data
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
     @Version
     Long version = 1L;
