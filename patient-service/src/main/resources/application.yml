@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/codeforsolution
+    password: Sumit@5052
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  application:
+    name: patient-service
+  devtools:
+    restart:
+      enabled: 'true'
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: ${PORT:0}
