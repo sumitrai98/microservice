@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class PatientRegistration {
 
-	//private Long id;
+
+	private Long id;
 	
 	@NotEmpty(message = "Name should not be Empty")
 	private String name;
@@ -25,5 +26,16 @@ public class PatientRegistration {
 	
 	@NotEmpty(message = "Emergency Contact not be Empty")
 	private String emergencyContact;
+	
+	@NotEmpty(message = "Password not be Empty")
+	private String password;
+	
+	@NotEmpty(message = "Email not be Empty")
+	private String email;
+	
+	private String emailOtp;
+	private String emailOtpExpiry;
+	private String mobileOtp;
+	private String mobileOtpExpiry;
 	
 }

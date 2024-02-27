@@ -9,12 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capefox.entity.PatientRegistrationEntity;
+import com.capefox.model.PatientChangePassword;
 import com.capefox.model.PatientRegistration;
 import com.capefox.service.IPetientRegistrationService;
 
@@ -59,6 +61,26 @@ public class PatientRegistrationController {
 		} else {
 			logger.info("Failed to save record in Database");
 			return new ResponseEntity<>("Record insertion Failed ", HttpStatus.OK);
+		}
+	}
+	
+	@PutMapping("/update-password")
+	public ResponseEntity<?> updatePatientPassword(@RequestBody PatientChangePassword changePassword){
+		PatientRegistrationEntity updatedPatient = registrationService.changePatientPassword(changePassword);
+		if (updatedPatient != null) {
+	        return ResponseEntity.ok("Patient password updated successfully");
+	    } else {
+	        return ResponseEntity.badRequest().body("Failed to update patient password");
+	    }
+	}
+	
+	@GetMapping("email-otp")
+	public ResponseEntity<String> getOtpOnEmail(@RequestParam Long id){
+		PatientRegistrationEntity status=registrationService.getOtpOnEmail(id);
+		if(status != null) {
+			return new ResponseEntity<>("One Time OTP Send on your Register Email Id",HttpStatus.OK);
+		}else {
+		   return new ResponseEntity<>("Issue In OTP Verification Service, Please Try Again!!",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 

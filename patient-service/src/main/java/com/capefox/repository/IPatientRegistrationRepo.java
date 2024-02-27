@@ -10,4 +10,8 @@ public interface IPatientRegistrationRepo extends JpaRepository<PatientRegistrat
 
 	PatientRegistrationEntity findByName(String name);
 
+	PatientRegistrationEntity save(String newPasswordEncoded);
+	
+	
+
 }

@@ -39,7 +39,25 @@ public class PatientRegistrationEntity {
 
 	@Column(name = "EMERGENCY_CONTACT")
 	private String emergencyContact;
+	
+	@Column(name = "PASSWORD")
+	private String password;
+	
+	@Column(name="EMAIL")
+	private String email;
+	
+	@Column(name="EMAIL_OTP")
+	private String emailOtp;
+	
+	@Column(name="EMAIL_OTP_EXPIRY")
+	private String emailOtpExpiry;
+	
+	@Column(name="MOBILE_OTP")
+	private String mobileOtp;
+	
+	@Column(name="MOBILE_OTP_EXPIRY")
+	private String mobileOtpExpiry;
 
 	
+	}
 
-}
